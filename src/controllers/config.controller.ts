@@ -7,33 +7,42 @@ import {
   Body,
   Put,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
-import { ConfigProvider } from 'src/services/config.service';
+import { ConfigService } from 'src/services/config.service';
 import { ConfigDto } from 'src/dto/config.dto';
 import { IConfig } from 'src/interfaces/config.interface';
+import { Config } from 'src/entities/config.entity';
 
 @Controller('/config')
 export class ConfigController {
-  constructor(private configProvider: ConfigProvider) {}
+  constructor(private configService: ConfigService) {}
   @Get('/:service?')
   getConfig(@Param() params: IConfig, @Query() query: IConfig) {
     const service: string = params.service;
     const version: string = query.version;
-    return this.configProvider.getConfig(service, version);
+    return this.configService.getConfig(service, version);
   }
 
   @Post()
-  createConfig(@Body() dto: ConfigDto) {
-    this.configProvider.createConfig(dto);
+  createConfig(
+    @Body() dto: ConfigDto,
+  ): Promise<string | object | Config | HttpException | HttpStatus> {
+    return this.configService.createConfig(dto);
   }
 
   @Put()
-  updateConfig(@Body() dto: ConfigDto) {
-    this.configProvider.updateConfig(dto);
+  updateConfig(
+    @Body() dto: ConfigDto,
+  ): Promise<string | object | Config | HttpException | HttpStatus> {
+    return this.configService.updateConfig(dto);
   }
 
   @Delete()
-  deleteConfig(@Body() dto: ConfigDto) {
-    this.configProvider.deleteConfig(dto);
+  deleteConfig(
+    @Body() dto: ConfigDto,
+  ): Promise<string | object | Config | HttpException | HttpStatus> {
+    return this.configService.deleteConfig(dto);
   }
 }

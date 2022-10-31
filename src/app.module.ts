@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigController } from './controllers/config.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dbConfig } from './config/db.config';
-import { ConfigProvider } from './services/config.service';
+import { ConfigService } from './services/config.service';
 import { Config } from './entities/config.entity';
 
 @Module({
@@ -11,6 +11,6 @@ import { Config } from './entities/config.entity';
     TypeOrmModule.forFeature([Config]),
   ],
   controllers: [ConfigController],
-  providers: [ConfigProvider],
+  providers: [ConfigService],
 })
 export class AppModule {}

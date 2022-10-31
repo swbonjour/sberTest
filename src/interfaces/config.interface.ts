@@ -3,3 +3,8 @@ export interface IConfig {
   service: string;
   data: object;
 }
+
+export interface IInUse {
+  version: string;
+  service: string;
+}
