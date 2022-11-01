@@ -54,7 +54,7 @@
 ## Installation
 
 ```bash
-$ npm install
+$ npm install // "if" you start locally you need to change src/config/db.config.ts variables
 $ or you can use docker-compose up to start the project
 ```
 
@@ -62,7 +62,7 @@ $ or you can use docker-compose up to start the project
 
 ```bash
 # development
-$ npm run start
+$ npm run start // "if" you start locally you need to change src/config/db.config.ts variables
 $ or you can use docker-compose up to start the project
 ```
 
