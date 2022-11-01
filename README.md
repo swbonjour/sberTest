@@ -34,6 +34,7 @@ $ or you can use docker-compose up to start the project
 ```bash
 # development
 $ npm run start
+$ or you can use docker-compose up to start the project
 
 ## Test
 
