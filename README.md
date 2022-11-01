@@ -20,7 +20,36 @@
 - [x] удаление, в случае использования другим приложением
 - [x] docker
 - [x] unit test
-- [ ] test example 
+- [ ] test example
+
+## How to use the api
+ 
+ - GET - http://localhost:3000/config/(serviceName)?version=(serviceVersion) можно не указывать версию, тогда вернется последняя версия данного конфига
+         http://localhost:3000/config/test?version=1
+
+ - POST - http://localhost:3000/config должно передаваться тело запроса вида (весрия указывается автоматически, нельзя создать 2 конфига с 1 именем, для того, чтобы создать конфиг с таким же именем, его следует обновить):
+          {
+            service: "test",
+            data: {
+              backgroundColor: "black",
+              color: "white"
+            }
+          }
+
+ - PUT - http://lcoalhost:3000/config должно передаваться тело запроса вида (версия конфига обновится автоматически version + 1)
+         {
+          service: "test",
+          data: {
+            backgroundColor: "white",
+            color: "black"
+          }
+         }
+
+ - DELETE - http://localhost:3000/config должно передаваться тело запроса вида (нельзя удалить конфиг, если последний get относился к удаляемому конифгу)
+            {
+              version: "1"
+              service: "test"
+            }
 
 ## Installation
 
