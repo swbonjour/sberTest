@@ -20,7 +20,7 @@
 - [x] удаление, в случае использования другим приложением
 - [x] docker
 - [x] unit test
-- [] test example 
+- [ ] test example 
 
 ## Installation
 
